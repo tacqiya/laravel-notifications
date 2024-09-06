@@ -1,6 +1,14 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
 use App\Notifications\RegistrationSuccessful;
 
-public function registerpost(Request $request)
+class AuthController extends Controller
+{
+    public function registerpost(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required | string | max:255',
@@ -38,3 +46,4 @@ public function registerpost(Request $request)
         Auth::user()->unreadNotifications->markAsRead();
         return redirect()->back();
    }
+}
